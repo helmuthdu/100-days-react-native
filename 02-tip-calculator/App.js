@@ -1,8 +1,8 @@
-import React from 'react';
-import { StyleSheet, View, TextInput } from 'react-native';
-import { Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
-import { Header, Input, Slider, Text, ThemeProvider } from 'react-native-elements';
+import { Font } from 'expo';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Header, Slider, Text, ThemeProvider } from 'react-native-elements';
 import { MoneyInput } from './MoneyInput';
 
 export default class App extends React.Component {
@@ -16,6 +16,15 @@ export default class App extends React.Component {
     await Font.loadAsync({
       ...Ionicons.font
     });
+  }
+
+  get calculated() {
+    const { tip, value } = this.state;
+    return {
+      percentage: Math.round(tip * 10000) / 100,
+      value: Math.round(value * tip * 100) / 100,
+      total: Math.round(value * (1 + tip) * 100) / 100
+    }
   }
 
   render() {
@@ -45,11 +54,11 @@ export default class App extends React.Component {
             </View>
             <View>
               <Text style={styles.text}>
-                Tip ({Math.round(tip * 10000) / 100}%):${Math.round(value * tip * 100) / 100}
+                Tip ({this.calculated.percentage}%):${this.calculated.value}
               </Text>
             </View>
             <View>
-              <Text style={styles.text}>Total: ${Math.round(value * (1 + tip) * 100) / 100}</Text>
+              <Text style={styles.text}>Total: ${this.calculated.total}</Text>
             </View>
             <View style={styles.slider}>
               <Slider step={0.01} value={tip} onValueChange={v => this.setState({ tip: Number(v) })} />
