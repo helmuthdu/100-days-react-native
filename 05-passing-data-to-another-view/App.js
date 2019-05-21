@@ -1,4 +1,3 @@
-import { Font, Icon } from 'expo';
 import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import { BlankPage } from './components/blank-page/blank-page';
