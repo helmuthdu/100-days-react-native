@@ -5,11 +5,29 @@ import DraggableFlatList from 'react-native-draggable-flatlist';
 
 const deviceDimensions = Dimensions.get('window');
 
+const dataset = {
+  set1: [
+    { id: 1, name: 'Milk' },
+    { id: 2, name: 'Apples' },
+    { id: 3, name: 'Strawberry' },
+    { id: 4, name: 'Eggs' },
+    { id: 5, name: 'Milkshake' }
+  ],
+  set2: [
+    { id: 6, name: 'Banana' },
+    { id: 7, name: 'Chocolate' },
+    { id: 8, name: 'Juice' },
+    { id: 9, name: 'Pear' },
+    { id: 10, name: 'Orange' },
+    { id: 11, name: 'Chicken' }
+  ]
+};
+
 export default class App extends React.Component {
   state = {
     isMoving: false,
     isRefreshing: false,
-    data: ['Milk', 'Apples', 'Ham', 'Eggs']
+    data: dataset.set1
   };
 
   render() {
@@ -39,7 +57,7 @@ export default class App extends React.Component {
             stickyHeaderIndices={[0]}
             keyExtractor={this._keyExtractor}
             data={data}
-            scrollPercent={5}
+            scrollPercent={1}
             onMoveBegin={() => this.setState({ isMoving: true })}
             onMoveEnd={({ data }) => this.setState({ data, isMoving: false })}
             renderItem={this.renderItem}
@@ -55,16 +73,13 @@ export default class App extends React.Component {
         leftOpenValue={75}
         rightOpenValue={-75}
         left={
-          <Button success title="add" onPress={() => alert(item)}>
+          <Button success title="add" onPress={() => alert(item.name)}>
             <Icon active name="add" />
           </Button>
         }
         body={
-          <TouchableOpacity
-            style={styles.item}
-            onLongPress={move}
-            onPressOut={moveEnd}>
-            <Text style={{width: deviceDimensions.width}}>{item}</Text>
+          <TouchableOpacity style={styles.item} onLongPress={move} onPressOut={moveEnd}>
+            <Text style={{ width: deviceDimensions.width }}>{item.name}</Text>
           </TouchableOpacity>
         }
         right={
@@ -76,7 +91,7 @@ export default class App extends React.Component {
     );
   };
 
-  _keyExtractor = (item, index) => item;
+  _keyExtractor = (item, index) => String(item.id);
 
   _handleClick = () => {
     console.log('CLICKED!');
@@ -87,9 +102,7 @@ export default class App extends React.Component {
     setTimeout(() => {
       this.setState({
         isRefreshing: false,
-        data: this.state.data.includes('Banana')
-          ? ['Milk', 'Apples', 'Ham', 'Eggs']
-          : ['Banana', 'Chocolate', 'Milk', 'Apples', 'Ham', 'Eggs']
+        data: this.state.data.map(i => i.name).includes('Banana') ? dataset.set1 : dataset.set2
       });
     }, 1000);
   };
@@ -98,8 +111,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   item: {
     paddingHorizontal: 15,
-    paddingVertical: 5,
-    height: 50,
+    height: 28,
     justifyContent: 'center'
   }
 });
