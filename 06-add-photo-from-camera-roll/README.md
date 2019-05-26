@@ -1,3 +1,7 @@
+## Add Photo From Camera Roll
+
+![Add Photo From Camera Roll](preview.gif)
+
 ### I learned how to:
 
 - Access the Camera Roll from within the App
@@ -6,4 +10,3 @@
 - Control how the image is displayed to prevent stretching
 
 Tools: react-native, native-base
-

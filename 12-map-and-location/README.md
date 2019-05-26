@@ -1,3 +1,7 @@
+## Map and Location
+
+![Map and Location](preview.gif)
+
 ### I learned how to:
 
 - Get current user location

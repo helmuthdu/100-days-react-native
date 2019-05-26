@@ -24,7 +24,7 @@ export class HomePage extends Component {
         </Header>
         <Content>
           <View>
-            <Input placeholder="Search" onChangeText={query => this.setState({ query })} />
+            <Input placeholder="Name" onChangeText={query => this.setState({ query })} />
           </View>
         </Content>
       </Container>

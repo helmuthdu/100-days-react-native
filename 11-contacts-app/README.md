@@ -1,3 +1,7 @@
+## Contacts App
+
+![Contacts App](preview.gif)
+
 ### I learned how to:
 
 - Change the color of the Navigation Bar, Status Bar and Navigation Buttons

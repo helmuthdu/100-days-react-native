@@ -1,3 +1,7 @@
+## Tip Calculator
+
+![Tip Calculator](preview.gif)
+
 ### I learned how to:
 
 - Work with Computed Properties

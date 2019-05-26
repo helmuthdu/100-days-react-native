@@ -1,3 +1,7 @@
+## Pull to Refresh Table View
+
+![Pull to Refresh Table View](preview.gif)
+
 ### I learned how to:
 
 - Create custom Refresh Control

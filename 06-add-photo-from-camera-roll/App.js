@@ -1,5 +1,5 @@
 import { ImagePicker, Permissions } from 'expo';
-import { Body, Button, Container, Content, Header, Icon, Textarea, Left, Right, Title, View } from 'native-base';
+import { Body, Button, Container, Content, Header, Icon, Input, Left, Right, Title, View } from 'native-base';
 import React from 'react';
 import { Dimensions, Image, StyleSheet } from 'react-native';
 
@@ -12,12 +12,7 @@ export default class App extends React.Component {
   };
 
   async componentDidMount() {
-    const permission = await Permissions.getAsync(Permissions.CAMERA_ROLL);
-    if (permission.status !== 'granted') {
-      console.log('granted');
-    } else {
-      console.log('not granted');
-    }
+    await Permissions.getAsync(Permissions.CAMERA_ROLL);
   }
 
   render() {
@@ -37,12 +32,10 @@ export default class App extends React.Component {
         </Header>
         <Content>
           <View style={styles.message}>
-            <Textarea placeholder="Search" onChangeText={query => this.setState({ query })} />
+            <Input multiline placeholder="Text" onChangeText={query => this.setState({ query })} />
           </View>
           <View style={styles.responsiveContainer}>
-            {image && (
-              <Image source={{ uri: image.uri }} style={styles.responsiveImg} resizeMode="cover" />
-            )}
+            {image && <Image source={{ uri: image.uri }} style={styles.responsiveImg} resizeMode="cover" />}
           </View>
         </Content>
       </Container>
@@ -51,7 +44,7 @@ export default class App extends React.Component {
 
   _pickImage = async () => {
     let image = await ImagePicker.launchImageLibraryAsync({
-      allowsEditing: true,
+      allowsEditing: true
     });
 
     if (!image.cancelled) {
@@ -67,11 +60,11 @@ const styles = StyleSheet.create({
   responsiveContainer: {
     flex: 1,
     // arbitrary width that shall not be exceeded
-    width: '100%',
+    width: '100%'
   },
   responsiveImg: {
     // Image dimensions are known: 600, 330
-    aspectRatio: 600 / 330,
+    aspectRatio: 600 / 480,
     // Make sure the image stretches and shrinks
     width: '100%',
     height: '100%',
@@ -80,11 +73,11 @@ const styles = StyleSheet.create({
     // don't use maxWidth / maxHeight or set their
     // value to null
     maxWidth: 600,
-    maxHeight: 330,
+    maxHeight: 480,
     // center horizontally
     marginLeft: 'auto',
     marginRight: 'auto',
     // make sure, the image is resized properly:
-    resizeMode: 'contain',
+    resizeMode: 'contain'
   }
 });

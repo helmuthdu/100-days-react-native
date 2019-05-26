@@ -1,6 +1,8 @@
-### I learned how to:
+## Photo Catalog
 
-<span style="display:block;text-align:center">![App](app.gif)</span>
+![Photo Catalog](preview.gif)
+
+### I learned how to:
 
 - Work with image grid
 - Basic Image animation

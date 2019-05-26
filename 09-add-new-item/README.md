@@ -1,3 +1,7 @@
+## Add New Item
+
+![Add New Item](preview.gif)
+
 ### I learned how to:
 
 - Integration with redux/sagas/thunk

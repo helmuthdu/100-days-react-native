@@ -1,3 +1,7 @@
+## Tap Or Hold
+
+![Tap Or Hold](preview.gif)
+
 ### I learned how to:
 
 - Build an Interface with Labels and Buttons

@@ -1,3 +1,7 @@
+## Current Date
+
+![Current Date](preview.gif)
+
 ### I learned how to:
 
 - Work with DateFns

@@ -33,7 +33,7 @@ export default class App extends React.Component {
       <ThemeProvider>
         <View style={styles.container}>
           <Header
-            centerComponent={{ text: 'Tip Calculator', style: { color: '#fff', fontSize: 16, fontWeight: '700' } }}
+            centerComponent={{ text: 'Tip Calculator', style: { fontSize: 16, fontWeight: '700' } }}
           />
           <View style={styles.content}>
             <View style={styles.input}>
